@@ -1,0 +1,34 @@
+<div class="container">
+ <div class="row">
+  <div class="col-md-12">
+   <h2 class="bg-light text-center w100">会員一覧</h2>
+    <table class="table table-striped table-bordered border-dark w-95 h-95 shadow">
+     <thead>
+      <tr class="table-secondary">
+	     <th>会員ID</th>
+		   <th>アカウント名</th>
+	     <th>メールアドレス</th>
+		   <th>ステータス</th>
+		   <th></th>
+	    </tr>
+	   </thead>
+	   <tbody>
+		  <% @customers.each do |customer| %>
+			 <tr>
+				<td><%= customer.id %></td>
+			  <td><%= customer.name %></td>
+				<td><%= customer.email %></td>
+				<td>
+					 <% if customer.is_deleted == false %><div class= "text-success" >有効</div>
+           <% elsif customer.is_deleted == true %>退会
+           <% end %>
+				</td>
+				<td><%= link_to "詳細", admin_customer_path(customer), class: "btn btn-primary" %></td>
+			 </tr>
+		  <% end %>
+	   </tbody>
+    </table>
+   <%= paginate @customers, theme: 'twitter-bootstrap-4' %>
+  </div>
+ </div>
+</div>

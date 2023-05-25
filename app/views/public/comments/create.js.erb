@@ -1,0 +1,3 @@
+<!--フォームを送信したあとにフォームの値を空にします-->
+$("textarea").val('');
+$('.comments_index').html("<%= j(render 'public/comments/index', review: @comment.review) %>")

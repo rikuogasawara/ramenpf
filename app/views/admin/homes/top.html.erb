@@ -1,0 +1,47 @@
+<div class="notice alert-info h4"><%= flash[:notice] %></div>
+<div class="container">
+ <div class="row">
+  <div data-turbolinks="false" class="col-md-12">
+   <h2 class="bg-light text-center w100">レビュー一覧</h2>
+    <table class="table table-striped table-bordered border-dark w-95 h-95 shadow">
+     <thead>
+      <tr class="table-secondary">
+       <th>レビューID</th>
+       <th>お店</th>
+       <th>メニュー</th>
+       <th>点数</th>
+       <th>いいね数</th>
+       <th>コメント数</th>
+       <th>公開日</th>
+      </tr>
+     </thead>
+     <tbody>
+      <% @review.each do |review| %>
+       <tr>
+         <td><%= review.id %></td>
+         <td><%= link_to review.name,admin_review_path(review) %></td>
+         <td><%= review.menu %></td>
+         <td id= 'star<%= review.id %>' ></td>
+         <td>いいね:<%= review.favorites.count %></td>
+         <td>コメント数:<%= review.comments.count %></td>
+         <td><%= review.updated_at.strftime('%Y/%m/%d') %></td>
+       </tr>
+       <!--星評価-->
+       <script>
+         var elem = document.getElementById('star<%= review.id %>');
+         var opt = {
+          size     : 36,
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          readOnly: true,
+          score: <%= review.rate %>
+         };
+         raty(elem,opt);
+       </script>
+      <% end %>
+     </tbody>
+    </table>
+   <%= paginate @review, theme: 'twitter-bootstrap-4' %>
+  </div>
+ </div>
+</div>

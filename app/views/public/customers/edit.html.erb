@@ -1,0 +1,36 @@
+<div class="container">
+ <div class="row">
+  <div class="col-md-12">
+   <h2 class="bg-light text-center w100">マイページ編集</h2>
+  </div>
+ </div>
+ <div class="row justify-content-around">
+  <%= form_with model: @customer, url: update_information_path, method: :patch do |f| %>
+   <%= render "public/shared/error_messages", model: f.object %>
+    <table class="table table-borderless">
+     <tbody>
+      <tr>
+       <th><%= f.label :"ユーザー名" %></th>
+       <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+       <th><%= f.label :"メールアドレス" %></th>
+       <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+       <th><%= f.label :"画像" %></th>
+       <td><%= f.file_field :image, accept: "image/*" %></td>
+      </tr>
+      <tr>
+       <th><%= f.label :"性別" %></th>
+       <td><%= f.select :sex, Customer.sexes.keys.map {|k| [I18n.t("enums.customer.sex.#{k}"), k]} %></td>
+      </tr>
+     </tbody>
+    </table>
+   <div class="row justify-content-around example">
+    <div><%= f.submit :"編集内容を保存",class:"btn btn-success"%></div>
+    <div><%= link_to "退会する", unsubscribe_path(@customer), class:"btn btn-danger" %></div>
+   </div>
+  <% end %>
+ </div>
+</div>

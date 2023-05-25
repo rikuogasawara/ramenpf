@@ -1,0 +1,54 @@
+<div class="container">
+ <div class="row">
+  <div data-turbolinks="false" class="col-md-12">
+   <h2 class="bg-light text-center w100">みんなのレビュー</h2>
+   <!--絞り込み機能-->
+    <%= form_with url: reviews_path, method: :get do |f| %>
+    <%= f.collection_select :type_id, Type.all, :id, :name,include_blank: "選択して下さい" %>
+    <%= f.collection_select :soup_id, Soup.all, :id, :name,include_blank: "選択して下さい" %>
+    <%= f.submit '絞り込み' %>
+    <% end %>
+     <table class="table table-striped table-bordered border-dark w-95 h-95 shadow">
+      <thead>
+       <tr class="table-secondary">
+         <th>お店</th>
+         <th>メニュー</th>
+         <th>分類</th>
+         <th>スープ</th>
+         <th>点数</th>
+         <th>いいね数</th>
+         <th>コメント数</th>
+         <th>公開日</th>
+       </tr>
+     </thead>
+     <tbody>
+      <% @review.each do |review| %>
+       <tr>
+         <td><%= link_to review.name,review_path(review) %></td>
+         <td><%= review.menu %></td>
+         <td><%= review.type.name %></td>
+         <td><%= review.soup.name %></td>
+         <td id= 'star<%= review.id %>' ></td>
+         <td>いいね:<%= review.favorites.count %></td>
+         <td>コメント数:<%= review.comments.count %></td>
+         <td><%= review.updated_at.strftime('%Y/%m/%d') %></td>
+       </tr>
+       <!--星評価-->
+       <script>
+         var elem = document.getElementById('star<%= review.id %>');
+         var opt = {
+          size     : 36,
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          readOnly: true,
+          score: <%= review.rate %>
+         };
+         raty(elem,opt);
+       </script>
+      <% end %>
+     </tbody>
+    </table>
+   <%= paginate @review, theme: 'twitter-bootstrap-4'%>
+  </div>
+ </div>
+</div>

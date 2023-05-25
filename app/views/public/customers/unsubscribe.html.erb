@@ -1,0 +1,11 @@
+<div class="text-center row-color">
+<h1>本当に退会しますか？</h1>
+<p>
+  退会手続きを行うと、あなたの会員情報や<br>
+  これまでのレビュー投稿は参照不可能となります。<br>
+  退会を決定された場合は、「退会する」をクリックして進んでください。
+</p>
+<p>
+  <%= link_to "退会する", withdraw_path, method: :patch,  class:"btn btn-danger", data: { confilm: "本当に退会しますか？" }  %>
+  <%= link_to "退会しない", mypage_path(current_customer), class:"btn btn-secondary" %>
+</p>

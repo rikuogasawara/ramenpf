@@ -1,0 +1,51 @@
+<div class="notice alert-info h4"><%= flash[:notice] %></div>
+<div class="container">
+ <div class="row">
+  <div class="col-md-12">
+   <h2 class="bg-light text-center w100">マイページ</h2>
+  　 <div class="row">
+  　  <% if @customer.name != "guestuser" %>
+   　  <div class="col-md-4">
+    　   <p class="font-weight-bold h4">登録情報</p>
+   　  </div>
+   　  <div class="col-md-4 ml-auto text-right">
+    　   <%= link_to "編集する",edit_information_path(@customer), class:"btn btn-success" %>
+      </div>
+  　  <% end %>
+    </div>
+ 　  <div class="row">
+     <div class="col-md-3">
+ 　    <div><%= image_tag @customer.get_image, size:"200x200" %></div>
+  　  </div>
+  　  <div class="col-md-7 ml-auto text-righ">
+      <table class="table table-bordered border-dark w-95 h-95 shadow">
+   　   <tbody>
+    　   <tr>
+     　    <td class="table-secondary">ユーザー名</td>
+       　  <td><%= @customer.name %></td>
+     　  </tr>
+     　  <tr>
+      　   <td class="table-secondary">メールアドレス</td>
+      　   <td><%= @customer.email %></td>
+        </tr>
+    　   <tr>
+      　   <td class="table-secondary">性別</td>
+      　   <td><%= @customer.sex_i18n %></td>
+     　  </tr>
+    　  </tbody>
+      </table>
+     </div>
+ 　  </div>
+    <div class="row justify-content-around position">
+     <div>
+  　   <p><%= link_to "レビュー一覧", myreviews_path, class:"btn btn-primary" %></p>
+     </div>
+    </div>
+    <div class="row justify-content-around position">
+     <div>
+      <p><%= link_to "いいね一覧", favorites_path, class:"btn btn-primary" %></p>
+     </div>
+    </div>
+  </div>
+ </div>
+</div>

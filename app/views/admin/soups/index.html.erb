@@ -1,0 +1,48 @@
+<div class="notice alert-info h4"><%= flash[:notice] %></div>
+<div class="container">
+ <div class="row">
+  <div class="col-md-12">
+   <h2 class="bg-light text-center w100">スープ一覧・追加</h2>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-md-12">
+   <%= form_with model: @soup, url: admin_soups_path do |f| %>
+    <%= render "admin/shared/error_messages", model: f.object %>
+     <table>
+      <td class="col-2 font-weight-bold"><%= f.label :name, "スープ名"  %></td>
+      <td class="col-2"><%= f.text_field :name %></td>
+      <td class="col-4"><%= f.submit '新規登録', class: "btn btn-success"%></td>
+     </table>
+   <% end %>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-md-8">
+   <table class="table table-striped table-bordered border-dark w-95 h-95 shadow center-block">
+    <thead>
+     <tr class="table-secondary">
+      <th style="width: 80%">スープ</th>
+      <th>編集</th>
+      <th>削除</th>
+     </tr>
+    </thead>
+    <tbody>
+     <% @soups.each do |soup| %>
+      <tr class="border-bottom">
+       <td><%= soup.name %></td>
+       <td><%= link_to edit_admin_soup_path(soup.id), class: "btn btn-success", method: :get do %>
+        <i class="fas fa-pen"></i>
+        <% end %>
+       </td>
+       <td><%= link_to admin_soup_path(soup), class: "btn btn-danger text-white", method: :delete do  %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
+       </td>
+      </tr>
+     <% end %>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</div>

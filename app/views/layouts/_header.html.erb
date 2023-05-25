@@ -1,0 +1,76 @@
+<header>
+ <div class="container">
+   <div class="row">
+      <div class="col-auto me-auto">
+      </div>
+      <div class="col-auto ml-auto d-flex align-items-center">
+        <div class="text-right">
+        </div>
+        <div>
+          <%= link_to "管理者", admin_path, class: "btn btn-secondary" %>
+        </div>
+      </div>
+   </div>
+ </div>
+
+   <!--顧客がサインインした場合-->
+   <% if customer_signed_in? %>
+    <nav>
+     <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <%= link_to "Top", root_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "レビュー一覧", reviews_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "レビュー投稿", new_review_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "マイページ", mypage_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item nav-item-end">
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+      </li>
+     </ul>
+
+   <!--＜管理者がログインした場合＞-->
+   <% elsif admin_signed_in? %>
+     <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <%= link_to "レビュー一覧", admin_path, class: "nav-link"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "分類一覧", admin_types_path,  class: "nav-link"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to "スープ一覧", admin_soups_path, class: "nav-link"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+      </li>
+     </ul>
+
+   <!--＜サインインしていない場合＞-->
+   <% else %>
+     <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <%= link_to "Top", root_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "About", about_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
+      </li>
+     </ul>
+    </nav>
+   <% end %>
+ </div>
+</header>

@@ -1,0 +1,66 @@
+<div class="container">
+ <div class="row">
+  <div class="col-md-12">
+   <h2 class="bg-light text-center w100 ">レビューを投稿しよう</h2>
+    <%= form_with model: @review, local: true do |f| %>
+     <%= render "public/shared/error_messages", model: f.object %>
+      <table class="table table-borderless">
+       <tbody>
+        <tr>
+          <th><%= f.label :"店名" %></th>
+          <td><%= f.text_field :name, autofocus: true, class: "form-control" %> </td>
+        </tr>
+        <tr>
+          <th><%= f.label :"住所", class: "form-label fw-bold" %></th>
+          <td><%= f.text_field :address, placeholder: "住所を入力してください", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"メニュー" %></th>
+          <td><%= f.text_field :menu, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"分類" %></th>
+          <td><%= f.collection_select :type_id, Type.all, :id, :name,include_blank: "選択して下さい" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"スープ" %></th>
+          <td><%= f.collection_select :soup_id, Soup.all, :id, :name,include_blank: "選択して下さい" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :rate, "評価" %></th>
+          <td><div id="star"><%= f.hidden_field :rate, id: :review_star %></div></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"写真" %></th>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"説明" %></th>
+          <td><%= f.text_area :introduction, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :"ステータス" %></th>
+          <td class="form-group">
+           <%= f.select :status, Review.statuses.keys.map { |k| [I18n.t("enums.review.status.#{k}"),k]} %>
+          </td>
+        </tr>
+        <!--星評価-->
+        <script>
+          var elem = document.getElementById('star');
+          var opt = {
+           size     : 36,
+           starOn: "<%= asset_path('star-on.png') %>",
+           starOff: "<%= asset_path('star-off.png') %>",
+           scoreName: 'review[rate]'
+          };
+          raty(elem,opt);
+        </script>
+       </tbody>
+      </table>
+     <div class= "row justify-content-center">
+         <%= f.submit "レビューを投稿する",class:"btn btn-success" %>
+     </div>
+    <% end %>
+   </div>
+  </div>
+</div>

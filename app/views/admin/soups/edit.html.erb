@@ -1,0 +1,19 @@
+<div class="container">
+ <div class="row">
+  <div class="col-md-12">
+   <h2 class="bg-light text-center w100">スープ編集</h2>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-md-8">
+   <%= form_with model:@soup, url: admin_soup_path(@soup.id) do |f| %>
+    <%= render "admin/shared/error_messages", model: f.object %>
+     <table>
+      <td class="col-3 font-weight-bold"><%= f.label :name, "スープ名" %></td>
+      <td class="col-2"><%= f.text_field :name %></td>
+      <td class="col-4"><%= f.submit '変更を保存', class: "btn btn-success"%></td>
+     </table>
+   <% end %>
+  </div>
+ </div>
+</div>

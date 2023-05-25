@@ -1,0 +1,39 @@
+ja:
+  activerecord:
+    models:
+      review: 投稿
+      customer: ユーザー
+      type: 分類
+      soup: スープ
+      admin: 管理者
+    attributes:
+      review:
+        id: ID
+        name: 店名
+        address: 住所
+        menu: メニュー
+        type: 分類
+        soup: スープ
+        rate: 評価
+        image: 写真
+        introduction: 説明
+        status: ステータス
+        created_at: 投稿日
+        updated_at: 更新日
+      customer:
+        id: ID
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        sex: 性別
+        created_at: 作成日
+        updated_at: 更新日
+      type:
+        id: ID
+        name: 分類名
+      soup:
+        id: ID
+        name: スープ名
+      admin:
+        email: メールアドレス
+        password: パスワード
