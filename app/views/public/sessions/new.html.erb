@@ -1,0 +1,38 @@
+<div class="container">
+ <div class="row">
+  <div class="col-md-12">
+   <h2 class="bg-light text-center w100">ラーメンレビューログイン</h2>
+    <%= form_with model: @customer, url: customer_session_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+    <p class="notice"><%= notice %></p>
+    <% if alert != nil%>
+      <div class="alert alert-danger">
+        <ul class="list-unstyled">
+          <li><%= alert %></li>
+        </ul>
+      </div>
+    <% end %>
+     <table class="table table-borderless text-center">
+      <tbody>
+       <tr>
+        <th>メールアドレス</th>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email",:placeholder => "sample@example.com"%></td>
+       </tr>
+       <tr>
+        <th>パスワード</th>
+        <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+       </tr>
+      </tbody>
+     </table>
+     <div class="row justify-content-center example">
+       <%= f.submit "ログイン",class:"btn btn-primary center-block" %>
+     </div>
+    <% end %>
+    <div class="row justify-content-center position">
+      <%= render "public/shared/links" %>
+    </div>
+    <div class="row justify-content-center position">
+     <%= link_to 'ゲストログイン', customers_guest_sign_in_path, class: "btn btn-secondary", method: :post %>
+    </div>
+  </div>
+ </div>
+</div>
