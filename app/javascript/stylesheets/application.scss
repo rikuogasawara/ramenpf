@@ -1,0 +1,112 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+// CSSの初期化
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// ナビゲーションの背景色
+.nav{
+  background-color: #302823;
+}
+
+// ナビゲーションの文字色
+.nav-link {
+  text-decoration: none;
+  color: #F4F1DE;
+}
+
+// ナビゲーションの枠線
+.nav-item {
+  border: 1px solid #A2666F;
+  border-right:none;
+}
+
+// ナビゲーションの枠線(一番右)
+.nav-item-end {
+  border-right: 1px solid #A2666F;
+}
+
+// ホバー時のデザイン
+a.nav-link:hover{
+  background-color: #5C4742 !important;
+  color: #F4F1DE;
+}
+
+// ページネーションの位置
+.pagination {
+  justify-content: center;
+}
+
+// ページネーション自体のデザイン
+.pagination a {
+  border: none;
+  background: none;
+  border-radius: 30px !important;
+  color: #5C4742;
+}
+
+// ホバー時のデザイン
+.pagination li a:hover {
+  background-color: #A2666F;
+  color: #5C4742;
+}
+
+// 現在のページの数字のところのデザイン
+.active a{
+  background: #6D2E46 !important;
+  color: #F4F1DE !important;
+}
+
+header{
+  background-color: #302823;
+}
+
+// 背景色
+body{
+  background-color: #F4F1DE;
+}
+
+.table{
+  background-color: #FBEEE6;
+}
+
+// トップページのリンク
+.top-link{
+    margin: 30px;
+    padding: 50px;
+    color: #5C4742;
+    background-color: #302823;
+}
+
+// トップページの投稿ボタン
+.btn-lg{
+    font-size: 35px;
+    margin-top: 30px;
+    padding: 30px;
+    background-color: #A2666F;
+    color: #F4F1DE;
+}
+
+// 各ページボタン位置
+.position{
+  margin-top: 30px;
+}
+
+// レビュー詳細
+.row-color{
+  background-color: #FBEEE6;
+}
+
+// レビュー詳細の説明欄
+.text-border{
+  border-radius: 30px;
+}
+
+// リンクの下線
+a:hover{
+  text-decoration: none;
+}
